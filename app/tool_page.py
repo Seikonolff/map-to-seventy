@@ -178,10 +178,18 @@ match st.session_state.tool_state.value:
         progress_text = f"Plotting map..."
         progress_bar.progress(0.5, text=progress_text)
 
-        st.session_state.map = plotMap(
+        map = plotMap(
             df,
             tile=st.session_state.tile_select
         )
+
+        if map is None:
+            st.error("Error plotting map. Please check your data.")
+            time.sleep(2)
+            st.session_state.tool_state = tool_state.IDLE
+            st.rerun()
+        else:
+            st.session_state.map = map
 
         # Step 4: Map successfully plotted
         progress_text = f"Map successfully plotted"

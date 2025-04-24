@@ -102,8 +102,12 @@ def plotMap(dataframe, tile='OpenStreetMap'):
         line_color = row['Line color']
 
         # Add markers
-        folium.Marker(origin, tooltip=f"Departure: {row['Departure city']}").add_to(m)
-        folium.Marker(dest, tooltip=f"Arrival: {row['Arrival city']}").add_to(m)
+        folium.CircleMarker(origin, radius=5, color='black', fill=True, fill_color='blue', 
+                    tooltip=f"Departure: {row['Departure city']}").add_to(m)
+        folium.CircleMarker(dest, radius=5, color='black', fill=True, fill_color='red', 
+                    tooltip=f"Arrival: {row['Arrival city']}").add_to(m)
+
+        folium.Circle(origin)
 
         # Add geodesic curve
         curve_points = get_geodesic_curve(origin, dest)
