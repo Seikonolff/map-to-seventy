@@ -37,7 +37,7 @@ match st.session_state.tool_state.value:
         st.write(
             """
             # Map Plotter
-            This is the tool page. You can use this page to data on a map.
+            This is the tool page. You can use this page to plot data on a map.
             """
         )
 
@@ -227,9 +227,9 @@ match st.session_state.tool_state.value:
 
             if st.button("Go Back", key="reset_tool_btn", icon="↩️"):
                 st.session_state.reset_tool = True
-                st.session_state.map = None
-                st.session_state.file = None
-                st.session_state.data_frame = None
+                #st.session_state.map = None
+                #st.session_state.file = None
+                #st.session_state.data_frame = None
                 st.session_state.input_select = "Excel"
                 st.session_state.tile_select = "OpenStreetMap"
                 
